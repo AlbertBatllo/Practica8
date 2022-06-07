@@ -1,9 +1,16 @@
 #include <Arduino.h>
 
 void setup() {
-  // put your setup code here, to run once:
+ 
+ Serial.begin(115200);
+ Serial2.begin(115200);
 }
-
-void loop() {
-  // put your main code here, to run repeatedly:
+ 
+void loop() { //Choose Serial1 or Serial2 as required
+ while (Serial.available()) {
+   Serial2.print(char(Serial.read()));
+ }
+ while (Serial2.available()) {
+   Serial.print(char(Serial2.read()));
+ }
 }
